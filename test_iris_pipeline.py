@@ -25,8 +25,9 @@ def test_evaluate_model():
     import sys
     captured_output = io.StringIO()
     sys.stdout = captured_output
-    evaluate_model(model, X_test, y_test)
+    acc = evaluate_model(model, X_test, y_test)
     sys.stdout = sys.__stdout__
     output = captured_output.getvalue()
     # Check if the output contains accuracy information
-    assert "Accuracy:" in output   
+    assert "Accuracy:" in output
+    assert acc >= 80
